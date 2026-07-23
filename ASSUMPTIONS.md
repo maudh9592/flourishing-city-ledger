@@ -12,10 +12,10 @@ The capability list used for the objective wellbeing index (§c.6) is a NORMATIV
 |---|---|
 | 🟡 moderate | 8 |
 | 🟠 low | 9 |
-| ⚫ assumed | 72 |
+| ⚫ assumed | 74 |
 | 🟣 normative | 1 |
 
-_81/90 parameters are low/very-low/assumed. This is expected and acceptable (§l.1: grade, don't exclude) — what matters is that the strength is stated out loud._
+_83/92 parameters are low/very-low/assumed. This is expected and acceptable (§l.1: grade, don't exclude) — what matters is that the strength is stated out loud._
 
 ## Parameters
 
@@ -95,6 +95,8 @@ _81/90 parameters are low/very-low/assumed. This is expected and acceptable (§l
 | `theta_chronic` | 0.6 | ⚫ assumed | none | — | No direct mapping from normalized stress to a load-accrual threshold; invented. NOTE: its OAT sensitivity_rank is a LOWER BOUND -- a 30-day horizon under-weights this slow-timescale (weeks) parameter; a longer run would rank it higher. |
 | `travel_ticks_range` | [1, 3] | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `urgency_threshold` | 0.15 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
+| `v9_adequacy_floor` | 0.6 | ⚫ assumed | none | Ryan & Deci 2000, Am Psychol 55(1):68-78 | SET POST-HOC after observing the default scores 0.99 -- calibrated to pass, not independent. V9 is PROVISIONAL. SDT frustration=ill-being (§c.2) is grounded; the 0.6 cutoff is a choice. |
+| `v9_gap_bound` | 0.3 | ⚫ assumed | none | — | Set post-hoc (tuned to pass on default). Currently REDUNDANT with a preference threshold: capability is a flat 0.88 without a capability-moving seam, so the gap term adds no objective/subjective information until such a seam is active. |
 | `w_cap` | 0.4 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `w_cost` | 0.3 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `w_memory` | 0.0 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |

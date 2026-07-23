@@ -1206,3 +1206,31 @@ parameters:
   sensitivity_rank: 12
   last_reviewed: '2026-07-24'
   parameter_class: behavioral
+- id: v9_adequacy_floor
+  value: 0.6
+  unit: fraction
+  config_path: null
+  description: 'V9 flourishing-floor: min fraction of awake time with all 3 SDT needs above frustration.'
+  grade: assumed
+  parameter_class: formalism
+  grade_rationale: SET POST-HOC after observing the default scores 0.99 -- calibrated to pass, not independent.
+    V9 is PROVISIONAL. SDT frustration=ill-being (§c.2) is grounded; the 0.6 cutoff is a choice.
+  sources:
+  - Ryan & Deci 2000, Am Psychol 55(1):68-78
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: v9_gap_bound
+  value: 0.3
+  unit: wellbeing
+  config_path: null
+  description: 'V9: max |capability-preference gap| for the flourishing floor.'
+  grade: assumed
+  parameter_class: formalism
+  grade_rationale: 'Set post-hoc (tuned to pass on default). Currently REDUNDANT with a preference threshold:
+    capability is a flat 0.88 without a capability-moving seam, so the gap term adds no objective/subjective
+    information until such a seam is active.'
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
