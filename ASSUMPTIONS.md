@@ -12,10 +12,10 @@ The capability list used for the objective wellbeing index (§c.6) is a NORMATIV
 |---|---|
 | 🟡 moderate | 8 |
 | 🟠 low | 9 |
-| ⚫ assumed | 74 |
-| 🟣 normative | 1 |
+| ⚫ assumed | 79 |
+| 🟣 normative | 2 |
 
-_83/92 parameters are low/very-low/assumed. This is expected and acceptable (§l.1: grade, don't exclude) — what matters is that the strength is stated out loud._
+_88/98 parameters are low/very-low/assumed. This is expected and acceptable (§l.1: grade, don't exclude) — what matters is that the strength is stated out loud._
 
 ## Parameters
 
@@ -42,6 +42,7 @@ _83/92 parameters are low/very-low/assumed. This is expected and acceptable (§l
 | `acquaintance_floor` | 0.001 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `base_interaction_prob` | 0.5 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `bond_gain` | 0.4 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
+| `capability_connection_ref` | 3.0 | ⚫ assumed | none | Sen 1985a Commodities and Capabilities; Nussbaum 2000 | A CONVERSION FACTOR in the Sen capability index -- assumed and HIGH-SENSITIVITY (conversion functions gate whether capability responds to degradation). No measurement. |
 | `capacity` | 200 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `close_threshold` | 0.3 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `crowding_stressor` | 0.3 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
@@ -52,6 +53,10 @@ _83/92 parameters are low/very-low/assumed. This is expected and acceptable (§l
 | `forget_threshold` | 0.05 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `frustration_stress_gain` | 0.4 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `frustration_threshold` | 0.2 | ⚫ assumed | none | Ryan & Deci 2000 | Need level below which frustration becomes an active stressor (SDT direction only). |
+| `habit_lazy_prob_scale` | 1.5 | ⚫ assumed | none | — | Alternative-submodel parameter (POM); assumed. |
+| `habit_load_novel_suppress` | 2.0 | ⚫ assumed | none | Dias-Ferreira et al. 2009 Science 325:621-625; Arnsten 2009 | Dias-Ferreira gives DIRECTION and timescale, not magnitude. The strength is assumed; ranged; HIGH-SENSITIVITY in the loaded regime (inert on the healthy default). Range-stability on a loaded config adjudicates it. |
+| `habit_load_threshold_gain` | 0.8 | ⚫ assumed | none | — | Alternative-submodel parameter (POM); assumed. |
+| `habit_load_value_boost` | 3.0 | ⚫ assumed | none | Dias-Ferreira et al. 2009 | As habit_load_novel_suppress -- direction cited, magnitude assumed, ranged, high-sensitivity in the loaded regime. |
 | `hard_cap_strong` | 5 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `home_autonomy_gain` | 0.08 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `home_capacity` | [1, 4] | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
@@ -113,6 +118,7 @@ _83/92 parameters are low/very-low/assumed. This is expected and acceptable (§l
 | `ws_k` | 4 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `ws_p` | 0.25 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `capability_list` | ['close_bonds', 'exercise_skill', 'rest_and_choose', 'participate', 'recognition'] | 🟣 normative | contested | Nussbaum 2000, Women and Human Development; Sen 1985a, 1992 | A value judgment, not an empirical claim. Contestable and config-swappable by design. |
+| `capability_weights` | [0.25, 0.2, 0.2, 0.2, 0.15] | 🟣 normative | contested | Nussbaum 2000 Women and Human Development | A value judgment (which functionings count, how much), never evidence -- Nussbaum-style list choice. Contestable and config-swappable. |
 
 ### Notes
 

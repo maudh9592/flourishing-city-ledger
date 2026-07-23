@@ -1234,3 +1234,94 @@ parameters:
   replication_status: none
   sensitivity_rank: null
   last_reviewed: '2026-07-24'
+- id: capability_connection_ref
+  value: 3.0
+  unit: close_ties
+  config_path: capability.connection_ref
+  grade: assumed
+  parameter_class: formalism
+  description: 'Capability conversion: close-tie count that fully converts social affordance into relatedness
+    capability (§c.6).'
+  grade_rationale: A CONVERSION FACTOR in the Sen capability index -- assumed and HIGH-SENSITIVITY (conversion
+    functions gate whether capability responds to degradation). No measurement.
+  sources:
+  - Sen 1985a Commodities and Capabilities
+  - Nussbaum 2000
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: capability_weights
+  value:
+  - 0.25
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.15
+  unit: normative_weights
+  config_path: capability.weights
+  grade: normative
+  parameter_class: formalism
+  description: Capability functioning weights (bond/skill/rest/choose/recognized) -- the NORMATIVE commitment,
+    fixed t=0.
+  grade_rationale: A value judgment (which functionings count, how much), never evidence -- Nussbaum-style
+    list choice. Contestable and config-swappable.
+  sources:
+  - Nussbaum 2000 Women and Human Development
+  replication_status: contested
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: habit_load_novel_suppress
+  value: 2.0
+  unit: per_load
+  config_path: habit.load_novel_suppress
+  grade: assumed
+  parameter_class: formalism
+  description: 'C4 counter_force: load*this suppresses w_novel (goal->habitual shift under chronic load,
+    §c.4).'
+  grade_rationale: Dias-Ferreira gives DIRECTION and timescale, not magnitude. The strength is assumed;
+    ranged; HIGH-SENSITIVITY in the loaded regime (inert on the healthy default). Range-stability on a
+    loaded config adjudicates it.
+  sources:
+  - Dias-Ferreira et al. 2009 Science 325:621-625
+  - Arnsten 2009
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: habit_load_value_boost
+  value: 3.0
+  unit: per_load
+  config_path: habit.load_value_boost
+  grade: assumed
+  parameter_class: formalism
+  description: 'C4 counter_force: load*this boosts w_value (revisit known high-value nodes under load).'
+  grade_rationale: As habit_load_novel_suppress -- direction cited, magnitude assumed, ranged, high-sensitivity
+    in the loaded regime.
+  sources:
+  - Dias-Ferreira et al. 2009
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: habit_load_threshold_gain
+  value: 0.8
+  unit: per_load
+  config_path: habit.load_threshold_gain
+  grade: assumed
+  parameter_class: formalism
+  description: threshold_raising submodel strength (POM alt; not default).
+  grade_rationale: Alternative-submodel parameter (POM); assumed.
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: habit_lazy_prob_scale
+  value: 1.5
+  unit: per_load
+  config_path: habit.lazy_prob_scale
+  grade: assumed
+  parameter_class: formalism
+  description: lazy_replanning submodel strength (POM alt; not default).
+  grade_rationale: Alternative-submodel parameter (POM); assumed.
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
