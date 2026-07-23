@@ -1,0 +1,1112 @@
+declared_value_judgment: 'The capability list used for the objective wellbeing index (§c.6) is a NORMATIVE
+  COMMITMENT, not a scientific finding. Nussbaum''s list is philosophically derived; Sen declined to fix
+  one. This model fixes a list for tractability. That choice is contestable; the list is swappable via
+  config so a critic can substitute their own and re-run. This judgment appears at the TOP of the ledger
+  by design, not buried.
+
+  '
+parameters:
+- id: tau_rise_h
+  value: 18.2
+  unit: hours
+  config_path: sleep.tau_rise_h
+  description: Sleep-pressure rise time constant while awake (two-process model).
+  grade: moderate
+  grade_rationale: Direct quantitative model; downgraded for indirectness (lab/averaged).
+  downgrades:
+  - indirectness
+  sources:
+  - Daan, Beersma & Borbely 1984, Am J Physiol 246:R161-R178
+  - Borbely 1982
+  replication_status: replicated
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: tau_decay_h
+  value: 4.2
+  unit: hours
+  config_path: sleep.tau_decay_h
+  description: Sleep-pressure decay time constant while asleep.
+  grade: moderate
+  grade_rationale: As tau_rise_h; twin-threshold formulation, secondary-literature value.
+  downgrades:
+  - indirectness
+  sources:
+  - Daan, Beersma & Borbely 1984, Am J Physiol 246:R161-R178
+  replication_status: replicated
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: circadian_harmonics
+  value:
+  - 0.97
+  - 0.22
+  - 0.07
+  - 0.03
+  unit: dimensionless
+  config_path: sleep.circadian_harmonics
+  description: Fourier coefficients of the circadian process C(t).
+  grade: low
+  grade_rationale: 1st/2nd harmonics grounded; 3rd/4th are secondary-literature/assumed.
+  downgrades:
+  - indirectness
+  - imprecision
+  sources:
+  - Daan, Beersma & Borbely 1984
+  replication_status: partial
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: tau_acute_h
+  value: 6.0
+  unit: hours
+  config_path: affect.tau_acute_h
+  description: Acute stress (cortisol) recovery time constant.
+  grade: moderate
+  grade_rationale: 'Downgraded from high for indirectness (rodent and lab-stressor studies applied to
+    a simulated post-labor population) and imprecision.
+
+    '
+  downgrades:
+  - indirectness
+  - imprecision
+  sources:
+  - Dias-Ferreira et al. 2009, Science 325:621-625
+  - Arnsten 2009, Nat Rev Neurosci 10:410-422
+  replication_status: partial
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: tau_load_days
+  value: 14.0
+  unit: days
+  config_path: affect.tau_load_days
+  description: Allostatic load recovery time constant (weeks, not one good night).
+  grade: low
+  grade_rationale: Allostatic-load timescales are qualitative in the literature; the number is a first
+    approximation.
+  downgrades:
+  - indirectness
+  - imprecision
+  sources:
+  - McEwen allostatic load
+  - Dias-Ferreira et al. 2009
+  replication_status: single_study
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: theta_chronic
+  value: 0.6
+  unit: normalized_stress
+  config_path: affect.theta_chronic
+  description: Stress threshold above which allostatic load accumulates.
+  grade: assumed
+  grade_rationale: No direct mapping from normalized stress to a load-accrual threshold; invented.
+  downgrades: []
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: td_alpha
+  value: 0.2
+  unit: dimensionless
+  config_path: affect.td_alpha
+  description: TD value-learning rate for place values V(node).
+  grade: moderate
+  grade_rationale: TD learning is well-established; the specific rate is a conventional default.
+  downgrades:
+  - indirectness
+  sources:
+  - Schultz 2013, Curr Opin Neurobiol
+  - Sutton & Barto (TD)
+  replication_status: replicated
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: beta_recall
+  value: 0.2
+  unit: dimensionless
+  config_path: memory.beta_recall
+  description: 'Recall-gated memory strengthening rate (reconsolidation on retrieval). Now LOAD-BEARING:
+    episodic salience drives familiarity-gated novelty, so recall vs decay-only diverge on V4 (see experiments/pom_submodels/FINDINGS.md).
+
+    '
+  grade: low
+  grade_rationale: Recall-gating mechanism is evidenced; the scalar is assumed and now shapes a validated
+    pattern (V4).
+  downgrades:
+  - indirectness
+  - imprecision
+  sources:
+  - Jain & Ganguli 2024, PMID 39023518
+  replication_status: single_study
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: maintenance_budget
+  value: 9.0
+  unit: maintenance_cost_units
+  config_path: bonds.maintenance_budget
+  description: 'Dunbar maintenance capacity. Inner-layer sizes emerge from this cap (with a superlinear
+    cost so strong ties crowd out others). This parameter GATES V7 entirely (see the falsifiability table
+    in experiments/pom_submodels and CALIBRATION.md) -- HIGH SENSITIVITY.
+
+    '
+  grade: assumed
+  grade_rationale: 'The Dunbar LAYER SIZES it is tuned toward are well-replicated, but the VALUE itself
+    is not independently derived -- it is set to match that reference, which makes V7 partly circular
+    (POM caveat). The original value 5.0 was an arbitrary starting point with no justification; changed
+    to 9.0 on 2026-07-24 because 9 better matches the human Dunbar bands at BOTH 50 and 150 agents (close
+    9.5->11.5, known 37->40.4 at 50; full bands at 150) without regressing any other target. Still tuning-to-target,
+    not a measurement: graded `assumed`.
+
+    '
+  downgrades: []
+  upgrades: []
+  sources:
+  - Zhou, Sornette, Hill & Dunbar 2005, Proc R Soc B 272:439-444
+  - Dunbar 2024, Ann Hum Biol
+  replication_status: none
+  sensitivity_rank: 1
+  last_reviewed: 2026-07-24
+- id: maintenance_cost_exponent
+  value: 2.0
+  unit: dimensionless
+  config_path: bonds.maintenance_cost_exponent
+  description: Exponent in tie-maintenance cost = strength**exp; superlinear so strong ties crowd out
+    others (§f).
+  grade: assumed
+  grade_rationale: The direction (strong ties cost disproportionately more contact-time) is qualitative
+    in Dunbar; the exponent is tuned.
+  downgrades: []
+  sources:
+  - Dunbar 2024, Ann Hum Biol
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: nadir_hour
+  value: 1.0
+  unit: hour_of_day
+  config_path: sleep.nadir_hour
+  description: 'Circadian phase reference. Phase-5 calibrated (with h_circadian_gain=0.25) so the emergent
+    sleep window lands ~23:00-06:00 rather than free-running.
+
+    '
+  grade: assumed
+  grade_rationale: A phase-anchoring knob standing in for the absent daylight/work zeitgeber; tuned to
+    a plausible night sleep window.
+  downgrades: []
+  sources:
+  - Daan, Beersma & Borbely 1984
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: quality_base
+  value: 0.35
+  unit: interaction_quality
+  config_path: social.quality_base
+  description: Baseline quality of a co-located social interaction (§f.2); Phase-5 calibrated so bonds
+    can build.
+  grade: assumed
+  grade_rationale: Interaction quality is a modelling construct with no direct measure; tuned so typical
+    contacts are positive.
+  downgrades: []
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: acquaintance_bond
+  value: 0.05
+  unit: bond_strength
+  config_path: bonds.acquaintance_bond
+  description: Weak tie set on first meeting; grows the outer "known" Dunbar layer as agents mix (§f).
+  grade: assumed
+  grade_rationale: The distinction between having MET someone and having BONDED is real; the numeric floor
+    is invented.
+  downgrades: []
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: decay_per_hour_n_rel
+  value: 0.025
+  unit: per_hour
+  config_path: needs.decay_per_hour.n_rel
+  description: Relatedness-need decay rate while awake.
+  grade: assumed
+  grade_rationale: SDT gives direction, not a decay rate; tuned to human-plausible timescale (§g calibration).
+  downgrades: []
+  sources:
+  - Ryan & Deci 2000, Am Psychol 55(1):68-78
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: naturalness_to_stress_relief
+  value: 0.4
+  unit: relief_per_unit_naturalness
+  config_path: node_effects.naturalness_to_stress_relief.value
+  description: Stress relief per unit node naturalness (neuroarchitecture seam, §d).
+  grade: low
+  grade_rationale: Direction is strong (Ulrich SRT); the scalar magnitude is assumed and flagged evidence=weak
+    in config.
+  downgrades:
+  - indirectness
+  - imprecision
+  sources:
+  - Ulrich Stress Reduction Theory
+  replication_status: partial
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: seam2_valence
+  value: -1.0
+  unit: sign
+  config_path: seams.cognitive_prosthetic.valence
+  description: 'Sign/strength of the cognitive-prosthetic seam (§i seam 2): negative = net deskilling
+    (Bainbridge), positive = net upskilling. The SIGN is the assumption under test (T4), not a finding.
+
+    '
+  grade: moderate
+  grade_rationale: 'Seam 2 is the best-evidenced of the seven, and negative-LEANING: automation deskilling
+    and illusion-of-competence are old and consistent, but the net sign in a post-labor world is unmeasured.
+    Downgraded for indirectness.
+
+    '
+  downgrades:
+  - indirectness
+  sources:
+  - Bainbridge 1983, Ironies of Automation
+  - Sparrow et al. 2011, Science 333:776-778
+  - Gerlich 2025 (AI use, critical thinking, cognitive offloading, N=666)
+  replication_status: replicated
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: seam2_skill_delta
+  value: 0.004
+  unit: per_work_tick
+  config_path: seams.cognitive_prosthetic.skill_delta
+  description: Per-work-tick change in ACTUAL capability-competence under the seam (× valence × usage).
+  grade: assumed
+  grade_rationale: No measurement maps AI-assist dose to a per-tick skill-change rate; tuned for a gradual
+    month-scale effect.
+  downgrades: []
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: capability_list
+  value:
+  - close_bonds
+  - exercise_skill
+  - rest_and_choose
+  - participate
+  - recognition
+  unit: normative_set
+  config_path: null
+  description: The fixed list of functionings scored by the objective capability index (§c.6).
+  grade: normative
+  grade_rationale: A value judgment, not an empirical claim. Contestable and config-swappable by design.
+  downgrades: []
+  sources:
+  - Nussbaum 2000, Women and Human Development
+  - Sen 1985a, 1992
+  replication_status: contested
+  sensitivity_rank: null
+  last_reviewed: 2026-07-23
+- id: crowding_stressor
+  value: 0.3
+  config_path: affect.crowding_stressor
+  description: per-hour stressor when node at capacity
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: eta_load
+  value: 0.01
+  config_path: affect.eta_load
+  description: allostatic load accrual rate
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: gain_N_range
+  value:
+  - 0.5
+  - 1.5
+  config_path: affect.gain_N_range
+  description: model parameter
+  grade: low
+  grade_rationale: HPA reactivity scales with Neuroticism; the range is assumed.
+  sources:
+  - Arnsten 2009, Nat Rev Neurosci 10:410-422
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: k_buffer
+  value: 0.3
+  config_path: affect.k_buffer
+  description: social + rest buffering strength
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: load_reward_damping
+  value: 0.5
+  config_path: affect.load_reward_damping
+  description: reward scaled by (1 - damping*load)
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: stress_base
+  value: 0.15
+  config_path: affect.stress_base
+  description: model parameter
+  grade: low
+  grade_rationale: Baseline cortisol is never truly zero; approximate resting level.
+  sources:
+  - McEwen allostatic load
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: td_gamma
+  value: 0.9
+  config_path: affect.td_gamma
+  description: model parameter
+  grade: moderate
+  grade_rationale: TD discount factor; conventional RL value.
+  sources:
+  - Sutton & Barto (TD)
+  replication_status: replicated
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: work_stressor
+  value: 0.1
+  config_path: affect.work_stressor
+  description: per-hour stressor from being at work
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: acquaintance_floor
+  value: 0.001
+  config_path: bonds.acquaintance_floor
+  description: bond below this is forgotten (dropped)
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: close_threshold
+  value: 0.3
+  config_path: bonds.close_threshold
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: hard_cap_strong
+  value: 5
+  config_path: bonds.hard_cap_strong
+  description: (hard_cap submodel only) max number of strong ties
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: k_decay_daily
+  value: 0.02
+  config_path: bonds.k_decay_daily
+  description: daily decay without contact
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: k_form
+  value: 0.2
+  config_path: bonds.k_form
+  description: base bond-formation rate
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: novelty_weight
+  value: 0.8
+  config_path: bonds.novelty_weight
+  description: exploration bonus scale (further scaled by O)
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: over_budget_decay
+  value: 0.3
+  config_path: bonds.over_budget_decay
+  description: extra daily decay on ties beyond the budget
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: strong_threshold
+  value: 0.6
+  config_path: bonds.strong_threshold
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: intention_horizon_base
+  value: 4
+  config_path: decision.intention_horizon_base
+  description: destinations per plan at C=1, low stress
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: intention_horizon_min
+  value: 1
+  config_path: decision.intention_horizon_min
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: sleep_debt_noise
+  value: 0.5
+  config_path: decision.sleep_debt_noise
+  description: extra softmax temp per unit sleep pressure
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: softmax_temperature
+  value: 0.5
+  config_path: decision.softmax_temperature
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: stress_novel_suppression
+  value: 1.0
+  config_path: decision.stress_novel_suppression
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: stress_value_boost
+  value: 1.0
+  config_path: decision.stress_value_boost
+  description: multiplies w_value at max stress
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: urgency_threshold
+  value: 0.15
+  config_path: decision.urgency_threshold
+  description: only a CRITICAL deficit (need < this) preempts a plan
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: w_cap
+  value: 0.4
+  config_path: decision.w_cap
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: w_cost
+  value: 0.3
+  config_path: decision.w_cost
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: w_memory
+  value: 0.0
+  config_path: decision.w_memory
+  description: optional reward attractor toward remembered-good places;
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: w_need
+  value: 1.0
+  config_path: decision.w_need
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: w_novel
+  value: 0.5
+  config_path: decision.w_novel
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: w_social
+  value: 1.2
+  config_path: decision.w_social
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: w_value
+  value: 0.6
+  config_path: decision.w_value
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: home_capacity
+  value:
+  - 1
+  - 4
+  config_path: environment.home_capacity
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: homes
+  value: 22
+  config_path: environment.homes
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: social
+  value: 8
+  config_path: environment.social
+  description: cafe / park / gym / plaza
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: social_capacity
+  value:
+  - 4
+  - 20
+  config_path: environment.social_capacity
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: travel_ticks_range
+  value:
+  - 1
+  - 3
+  config_path: environment.travel_ticks_range
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: work_capacity
+  value:
+  - 5
+  - 15
+  config_path: environment.work_capacity
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: workplaces
+  value: 5
+  config_path: environment.workplaces
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: ws_k
+  value: 4
+  config_path: environment.ws_k
+  description: each node joined to k nearest neighbours
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: ws_p
+  value: 0.25
+  config_path: environment.ws_p
+  description: rewiring probability
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: capacity
+  value: 200
+  config_path: memory.capacity
+  description: bounded episodic list
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: forget_threshold
+  value: 0.05
+  config_path: memory.forget_threshold
+  description: salience below which item is dropped
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: tau_mem_ticks
+  value: 240
+  config_path: memory.tau_mem_ticks
+  description: passive salience decay (~5 days at 48 t/day)
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: n_aut
+  value: 0.02
+  config_path: needs.decay_per_hour.n_aut
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: n_com
+  value: 0.02
+  config_path: needs.decay_per_hour.n_com
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: frustration_stress_gain
+  value: 0.4
+  config_path: needs.frustration_stress_gain
+  description: extra stressor weight when frustrated
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: frustration_threshold
+  value: 0.2
+  config_path: needs.frustration_threshold
+  description: below this a need becomes an active stressor
+  grade: assumed
+  grade_rationale: Need level below which frustration becomes an active stressor (SDT direction only).
+  sources:
+  - Ryan & Deci 2000
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: home_autonomy_gain
+  value: 0.08
+  config_path: needs.home_autonomy_gain
+  description: home restores autonomy (free choice, safety)
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: init_range
+  value:
+  - 0.4
+  - 0.7
+  config_path: needs.init_range
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: social_relatedness_gain
+  value: 0.055
+  config_path: needs.social_relatedness_gain
+  description: per-tick n_rel from co-presence at a social node
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: social_stress_relief_gain
+  value: 1.0
+  config_path: needs.social_stress_relief_gain
+  description: multiplies env stress_relief at social nodes
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: work_autonomy_cost
+  value: 0.04
+  config_path: needs.work_autonomy_cost
+  description: obligatory work depletes autonomy
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: work_competence_gain
+  value: 0.12
+  config_path: needs.work_competence_gain
+  description: competence on a successful mastery experience
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: work_success_prob
+  value: 0.7
+  config_path: needs.work_success_prob
+  description: P(mastery experience) per work tick, base
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: soft_fascination_to_restoration
+  value: 0.3
+  config_path: node_effects.soft_fascination_to_restoration.value
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: beta_a
+  value: 4.0
+  config_path: personality.beta_a
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: beta_b
+  value: 4.0
+  config_path: personality.beta_b
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: felt_boost
+  value: 0.008
+  config_path: seams.cognitive_prosthetic.felt_boost
+  description: per work-tick rise in FELT/perceived competence
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: h_circadian_gain
+  value: 0.25
+  config_path: sleep.h_circadian_gain
+  description: strong circadian gating anchors sleep to night
+  grade: low
+  grade_rationale: Circadian modulation depth of the sleep thresholds; tuned for a night sleep window.
+  sources:
+  - Daan, Beersma & Borbely 1984
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: h_minus_base
+  value: 0.17
+  config_path: sleep.h_minus_base
+  description: model parameter
+  grade: moderate
+  grade_rationale: Lower sleep threshold (wake) in the twin-threshold model.
+  sources:
+  - Daan, Beersma & Borbely 1984
+  replication_status: replicated
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: h_plus_base
+  value: 0.67
+  config_path: sleep.h_plus_base
+  description: model parameter
+  grade: moderate
+  grade_rationale: Upper sleep threshold (fall-asleep) in the two-process twin-threshold model.
+  sources:
+  - Daan, Beersma & Borbely 1984
+  replication_status: replicated
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: init_S_range
+  value:
+  - 0.2
+  - 0.5
+  config_path: sleep.init_S_range
+  description: model parameter
+  grade: assumed
+  grade_rationale: Initial sleep-pressure spread across agents; arbitrary.
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: base_interaction_prob
+  value: 0.5
+  config_path: social.base_interaction_prob
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: bond_gain
+  value: 0.4
+  config_path: social.bond_gain
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: extraversion_gain
+  value: 0.5
+  config_path: social.extraversion_gain
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: quality_agree_gain
+  value: 0.4
+  config_path: social.quality_agree_gain
+  description: agreeableness contribution (centered at 0.5)
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: quality_crowd_penalty
+  value: 0.4
+  config_path: social.quality_crowd_penalty
+  description: quality hit when the node is at capacity
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: quality_similarity_gain
+  value: 0.5
+  config_path: social.quality_similarity_gain
+  description: trait-similarity contribution (centered at 0.5)
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: quality_stress_penalty
+  value: 0.5
+  config_path: social.quality_stress_penalty
+  description: quality hit scaled by shared stress above 0.6
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: rel_deficit_gain
+  value: 0.3
+  config_path: social.rel_deficit_gain
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: rel_satisfaction
+  value: 0.15
+  config_path: social.rel_satisfaction
+  description: n_rel gain from a positive interaction
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: status_prestige_bonus
+  value: 0.2
+  config_path: social.status_prestige_bonus
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
+- id: stress_suppression
+  value: 0.4
+  config_path: social.stress_suppression
+  description: model parameter
+  grade: assumed
+  grade_rationale: Modelling scalar with no direct empirical basis; value chosen for plausible behaviour.
+    Many were tuned during calibration (see CALIBRATION.md).
+  sources: []
+  replication_status: none
+  sensitivity_rank: null
+  last_reviewed: '2026-07-24'
