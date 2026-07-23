@@ -19,7 +19,7 @@ parameters:
   - Daan, Beersma & Borbely 1984, Am J Physiol 246:R161-R178
   - Borbely 1982
   replication_status: replicated
-  sensitivity_rank: null
+  sensitivity_rank: 54
   last_reviewed: 2026-07-23
 - id: tau_decay_h
   value: 4.2
@@ -33,7 +33,7 @@ parameters:
   sources:
   - Daan, Beersma & Borbely 1984, Am J Physiol 246:R161-R178
   replication_status: replicated
-  sensitivity_rank: null
+  sensitivity_rank: 43
   last_reviewed: 2026-07-23
 - id: circadian_harmonics
   value:
@@ -52,7 +52,7 @@ parameters:
   sources:
   - Daan, Beersma & Borbely 1984
   replication_status: partial
-  sensitivity_rank: null
+  sensitivity_rank: 37
   last_reviewed: 2026-07-23
 - id: tau_acute_h
   value: 6.0
@@ -71,7 +71,7 @@ parameters:
   - Dias-Ferreira et al. 2009, Science 325:621-625
   - Arnsten 2009, Nat Rev Neurosci 10:410-422
   replication_status: partial
-  sensitivity_rank: null
+  sensitivity_rank: 42
   last_reviewed: 2026-07-23
 - id: tau_load_days
   value: 14.0
@@ -79,8 +79,9 @@ parameters:
   config_path: affect.tau_load_days
   description: Allostatic load recovery time constant (weeks, not one good night).
   grade: low
-  grade_rationale: Allostatic-load timescales are qualitative in the literature; the number is a first
-    approximation.
+  grade_rationale: 'Allostatic-load timescales are qualitative in the literature; the number is a first
+    approximation. NOTE: its OAT sensitivity_rank is a LOWER BOUND -- a 30-day horizon under-weights this
+    slow-timescale (weeks) parameter; a longer run would rank it higher.'
   downgrades:
   - indirectness
   - imprecision
@@ -88,7 +89,7 @@ parameters:
   - McEwen allostatic load
   - Dias-Ferreira et al. 2009
   replication_status: single_study
-  sensitivity_rank: null
+  sensitivity_rank: 76
   last_reviewed: 2026-07-23
 - id: theta_chronic
   value: 0.6
@@ -96,11 +97,13 @@ parameters:
   config_path: affect.theta_chronic
   description: Stress threshold above which allostatic load accumulates.
   grade: assumed
-  grade_rationale: No direct mapping from normalized stress to a load-accrual threshold; invented.
+  grade_rationale: 'No direct mapping from normalized stress to a load-accrual threshold; invented. NOTE:
+    its OAT sensitivity_rank is a LOWER BOUND -- a 30-day horizon under-weights this slow-timescale (weeks)
+    parameter; a longer run would rank it higher.'
   downgrades: []
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 74
   last_reviewed: 2026-07-23
 - id: td_alpha
   value: 0.2
@@ -115,7 +118,7 @@ parameters:
   - Schultz 2013, Curr Opin Neurobiol
   - Sutton & Barto (TD)
   replication_status: replicated
-  sensitivity_rank: null
+  sensitivity_rank: 55
   last_reviewed: 2026-07-23
 - id: beta_recall
   value: 0.2
@@ -134,33 +137,26 @@ parameters:
   sources:
   - Jain & Ganguli 2024, PMID 39023518
   replication_status: single_study
-  sensitivity_rank: null
+  sensitivity_rank: 13
   last_reviewed: 2026-07-23
 - id: maintenance_budget
   value: 9.0
   unit: maintenance_cost_units
   config_path: bonds.maintenance_budget
-  description: 'Dunbar maintenance capacity. Inner-layer sizes emerge from this cap (with a superlinear
-    cost so strong ties crowd out others). This parameter GATES V7 entirely (see the falsifiability table
-    in experiments/pom_submodels and CALIBRATION.md) -- HIGH SENSITIVITY.
-
-    '
+  description: Dunbar maintenance capacity; inner-layer sizes emerge from this cap (superlinear cost).
+    GLOBALLY important (the one-time 5->9 change was decisive for V7) but LOCALLY on a plateau -- OAT
+    sensitivity_rank 58, because 9->9.9 barely moves the layers. Low local sensitivity != low importance.
   grade: assumed
-  grade_rationale: 'The Dunbar LAYER SIZES it is tuned toward are well-replicated, but the VALUE itself
-    is not independently derived -- it is set to match that reference, which makes V7 partly circular
-    (POM caveat). The original value 5.0 was an arbitrary starting point with no justification; changed
-    to 9.0 on 2026-07-24 because 9 better matches the human Dunbar bands at BOTH 50 and 150 agents (close
-    9.5->11.5, known 37->40.4 at 50; full bands at 150) without regressing any other target. Still tuning-to-target,
-    not a measurement: graded `assumed`.
-
-    '
+  grade_rationale: 'Value not independently derived; set to match the Dunbar reference (V7 partly circular).
+    5.0 was arbitrary; changed to 9.0 (2026-07-24) for a better band match at both scales without regressing
+    anything. Still tuning-to-target: graded assumed.'
   downgrades: []
   upgrades: []
   sources:
   - Zhou, Sornette, Hill & Dunbar 2005, Proc R Soc B 272:439-444
   - Dunbar 2024, Ann Hum Biol
   replication_status: none
-  sensitivity_rank: 1
+  sensitivity_rank: 58
   last_reviewed: 2026-07-24
 - id: maintenance_cost_exponent
   value: 2.0
@@ -175,7 +171,7 @@ parameters:
   sources:
   - Dunbar 2024, Ann Hum Biol
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 30
   last_reviewed: 2026-07-23
 - id: nadir_hour
   value: 1.0
@@ -192,7 +188,7 @@ parameters:
   sources:
   - Daan, Beersma & Borbely 1984
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 59
   last_reviewed: 2026-07-23
 - id: quality_base
   value: 0.35
@@ -206,7 +202,7 @@ parameters:
   downgrades: []
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 21
   last_reviewed: 2026-07-23
 - id: acquaintance_bond
   value: 0.05
@@ -219,7 +215,7 @@ parameters:
   downgrades: []
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 24
   last_reviewed: 2026-07-23
 - id: decay_per_hour_n_rel
   value: 0.025
@@ -232,7 +228,7 @@ parameters:
   sources:
   - Ryan & Deci 2000, Am Psychol 55(1):68-78
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 22
   last_reviewed: 2026-07-23
 - id: naturalness_to_stress_relief
   value: 0.4
@@ -248,7 +244,7 @@ parameters:
   sources:
   - Ulrich Stress Reduction Theory
   replication_status: partial
-  sensitivity_rank: null
+  sensitivity_rank: 60
   last_reviewed: 2026-07-23
 - id: seam2_valence
   value: -1.0
@@ -271,7 +267,7 @@ parameters:
   - Sparrow et al. 2011, Science 333:776-778
   - Gerlich 2025 (AI use, critical thinking, cognitive offloading, N=666)
   replication_status: replicated
-  sensitivity_rank: null
+  sensitivity_rank: 87
   last_reviewed: 2026-07-23
 - id: seam2_skill_delta
   value: 0.004
@@ -284,7 +280,7 @@ parameters:
   downgrades: []
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 86
   last_reviewed: 2026-07-23
 - id: capability_list
   value:
@@ -314,7 +310,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 32
   last_reviewed: '2026-07-24'
 - id: eta_load
   value: 0.01
@@ -325,7 +321,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 75
   last_reviewed: '2026-07-24'
 - id: gain_N_range
   value:
@@ -338,7 +334,7 @@ parameters:
   sources:
   - Arnsten 2009, Nat Rev Neurosci 10:410-422
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 63
   last_reviewed: '2026-07-24'
 - id: k_buffer
   value: 0.3
@@ -349,7 +345,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 50
   last_reviewed: '2026-07-24'
 - id: load_reward_damping
   value: 0.5
@@ -360,7 +356,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 77
   last_reviewed: '2026-07-24'
 - id: stress_base
   value: 0.15
@@ -371,7 +367,7 @@ parameters:
   sources:
   - McEwen allostatic load
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 44
   last_reviewed: '2026-07-24'
 - id: td_gamma
   value: 0.9
@@ -382,7 +378,7 @@ parameters:
   sources:
   - Sutton & Barto (TD)
   replication_status: replicated
-  sensitivity_rank: null
+  sensitivity_rank: 1
   last_reviewed: '2026-07-24'
 - id: work_stressor
   value: 0.1
@@ -393,7 +389,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 11
   last_reviewed: '2026-07-24'
 - id: acquaintance_floor
   value: 0.001
@@ -404,7 +400,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 78
   last_reviewed: '2026-07-24'
 - id: close_threshold
   value: 0.3
@@ -415,7 +411,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 73
   last_reviewed: '2026-07-24'
 - id: hard_cap_strong
   value: 5
@@ -426,7 +422,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 79
   last_reviewed: '2026-07-24'
 - id: k_decay_daily
   value: 0.02
@@ -437,7 +433,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 39
   last_reviewed: '2026-07-24'
 - id: k_form
   value: 0.2
@@ -448,7 +444,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 17
   last_reviewed: '2026-07-24'
 - id: novelty_weight
   value: 0.8
@@ -459,7 +455,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 28
   last_reviewed: '2026-07-24'
 - id: over_budget_decay
   value: 0.3
@@ -470,7 +466,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 62
   last_reviewed: '2026-07-24'
 - id: strong_threshold
   value: 0.6
@@ -481,7 +477,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 72
   last_reviewed: '2026-07-24'
 - id: intention_horizon_base
   value: 4
@@ -492,7 +488,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 48
   last_reviewed: '2026-07-24'
 - id: intention_horizon_min
   value: 1
@@ -503,7 +499,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 16
   last_reviewed: '2026-07-24'
 - id: sleep_debt_noise
   value: 0.5
@@ -514,7 +510,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 80
   last_reviewed: '2026-07-24'
 - id: softmax_temperature
   value: 0.5
@@ -525,7 +521,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 81
   last_reviewed: '2026-07-24'
 - id: stress_novel_suppression
   value: 1.0
@@ -536,7 +532,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 82
   last_reviewed: '2026-07-24'
 - id: stress_value_boost
   value: 1.0
@@ -547,7 +543,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 71
   last_reviewed: '2026-07-24'
 - id: urgency_threshold
   value: 0.15
@@ -558,7 +554,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 33
   last_reviewed: '2026-07-24'
 - id: w_cap
   value: 0.4
@@ -569,7 +565,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 47
   last_reviewed: '2026-07-24'
 - id: w_cost
   value: 0.3
@@ -580,7 +576,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 67
   last_reviewed: '2026-07-24'
 - id: w_memory
   value: 0.0
@@ -602,7 +598,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 40
   last_reviewed: '2026-07-24'
 - id: w_novel
   value: 0.5
@@ -613,7 +609,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 29
   last_reviewed: '2026-07-24'
 - id: w_social
   value: 1.2
@@ -624,7 +620,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 9
   last_reviewed: '2026-07-24'
 - id: w_value
   value: 0.6
@@ -635,7 +631,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 15
   last_reviewed: '2026-07-24'
 - id: home_capacity
   value:
@@ -648,7 +644,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 8
   last_reviewed: '2026-07-24'
 - id: homes
   value: 22
@@ -659,7 +655,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 5
   last_reviewed: '2026-07-24'
 - id: social
   value: 8
@@ -670,7 +666,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 3
   last_reviewed: '2026-07-24'
 - id: social_capacity
   value:
@@ -683,7 +679,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 41
   last_reviewed: '2026-07-24'
 - id: travel_ticks_range
   value:
@@ -696,7 +692,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 14
   last_reviewed: '2026-07-24'
 - id: work_capacity
   value:
@@ -709,7 +705,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 49
   last_reviewed: '2026-07-24'
 - id: workplaces
   value: 5
@@ -720,7 +716,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 27
   last_reviewed: '2026-07-24'
 - id: ws_k
   value: 4
@@ -731,7 +727,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 83
   last_reviewed: '2026-07-24'
 - id: ws_p
   value: 0.25
@@ -742,7 +738,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 2
   last_reviewed: '2026-07-24'
 - id: capacity
   value: 200
@@ -753,7 +749,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 69
   last_reviewed: '2026-07-24'
 - id: forget_threshold
   value: 0.05
@@ -764,7 +760,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 4
   last_reviewed: '2026-07-24'
 - id: tau_mem_ticks
   value: 240
@@ -775,7 +771,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 38
   last_reviewed: '2026-07-24'
 - id: n_aut
   value: 0.02
@@ -786,7 +782,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 61
   last_reviewed: '2026-07-24'
 - id: n_com
   value: 0.02
@@ -797,7 +793,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 25
   last_reviewed: '2026-07-24'
 - id: frustration_stress_gain
   value: 0.4
@@ -808,7 +804,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 64
   last_reviewed: '2026-07-24'
 - id: frustration_threshold
   value: 0.2
@@ -819,7 +815,7 @@ parameters:
   sources:
   - Ryan & Deci 2000
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 56
   last_reviewed: '2026-07-24'
 - id: home_autonomy_gain
   value: 0.08
@@ -830,7 +826,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 57
   last_reviewed: '2026-07-24'
 - id: init_range
   value:
@@ -843,7 +839,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 10
   last_reviewed: '2026-07-24'
 - id: social_relatedness_gain
   value: 0.055
@@ -854,7 +850,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 26
   last_reviewed: '2026-07-24'
 - id: social_stress_relief_gain
   value: 1.0
@@ -865,7 +861,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 84
   last_reviewed: '2026-07-24'
 - id: work_autonomy_cost
   value: 0.04
@@ -876,7 +872,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 66
   last_reviewed: '2026-07-24'
 - id: work_competence_gain
   value: 0.12
@@ -887,7 +883,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 23
   last_reviewed: '2026-07-24'
 - id: work_success_prob
   value: 0.7
@@ -898,7 +894,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 52
   last_reviewed: '2026-07-24'
 - id: soft_fascination_to_restoration
   value: 0.3
@@ -909,7 +905,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 31
   last_reviewed: '2026-07-24'
 - id: beta_a
   value: 4.0
@@ -920,7 +916,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 18
   last_reviewed: '2026-07-24'
 - id: beta_b
   value: 4.0
@@ -931,7 +927,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 19
   last_reviewed: '2026-07-24'
 - id: felt_boost
   value: 0.008
@@ -942,7 +938,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 85
   last_reviewed: '2026-07-24'
 - id: h_circadian_gain
   value: 0.25
@@ -953,7 +949,7 @@ parameters:
   sources:
   - Daan, Beersma & Borbely 1984
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 68
   last_reviewed: '2026-07-24'
 - id: h_minus_base
   value: 0.17
@@ -964,7 +960,7 @@ parameters:
   sources:
   - Daan, Beersma & Borbely 1984
   replication_status: replicated
-  sensitivity_rank: null
+  sensitivity_rank: 7
   last_reviewed: '2026-07-24'
 - id: h_plus_base
   value: 0.67
@@ -975,7 +971,7 @@ parameters:
   sources:
   - Daan, Beersma & Borbely 1984
   replication_status: replicated
-  sensitivity_rank: null
+  sensitivity_rank: 36
   last_reviewed: '2026-07-24'
 - id: init_S_range
   value:
@@ -987,7 +983,7 @@ parameters:
   grade_rationale: Initial sleep-pressure spread across agents; arbitrary.
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 35
   last_reviewed: '2026-07-24'
 - id: base_interaction_prob
   value: 0.5
@@ -998,7 +994,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 6
   last_reviewed: '2026-07-24'
 - id: bond_gain
   value: 0.4
@@ -1009,7 +1005,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 65
   last_reviewed: '2026-07-24'
 - id: extraversion_gain
   value: 0.5
@@ -1020,7 +1016,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 70
   last_reviewed: '2026-07-24'
 - id: quality_agree_gain
   value: 0.4
@@ -1031,7 +1027,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 45
   last_reviewed: '2026-07-24'
 - id: quality_crowd_penalty
   value: 0.4
@@ -1042,7 +1038,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 34
   last_reviewed: '2026-07-24'
 - id: quality_similarity_gain
   value: 0.5
@@ -1053,7 +1049,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 46
   last_reviewed: '2026-07-24'
 - id: quality_stress_penalty
   value: 0.5
@@ -1064,7 +1060,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 88
   last_reviewed: '2026-07-24'
 - id: rel_deficit_gain
   value: 0.3
@@ -1075,7 +1071,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 20
   last_reviewed: '2026-07-24'
 - id: rel_satisfaction
   value: 0.15
@@ -1086,7 +1082,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 53
   last_reviewed: '2026-07-24'
 - id: status_prestige_bonus
   value: 0.2
@@ -1097,7 +1093,7 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 51
   last_reviewed: '2026-07-24'
 - id: stress_suppression
   value: 0.4
@@ -1108,5 +1104,5 @@ parameters:
     Many were tuned during calibration (see CALIBRATION.md).
   sources: []
   replication_status: none
-  sensitivity_rank: null
+  sensitivity_rank: 12
   last_reviewed: '2026-07-24'
