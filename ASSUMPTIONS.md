@@ -11,8 +11,8 @@ The capability list used for the objective wellbeing index (§c.6) is a NORMATIV
 | Grade | Count |
 |---|---|
 | 🟡 moderate | 8 |
-| 🟠 low | 7 |
-| ⚫ assumed | 74 |
+| 🟠 low | 9 |
+| ⚫ assumed | 72 |
 | 🟣 normative | 1 |
 
 _81/90 parameters are low/very-low/assumed. This is expected and acceptable (§l.1: grade, don't exclude) — what matters is that the strength is stated out loud._
@@ -29,6 +29,8 @@ _81/90 parameters are low/very-low/assumed. This is expected and acceptable (§l
 | `tau_rise_h` | 18.2 | 🟡 moderate | replicated | Daan, Beersma & Borbely 1984, Am J Physiol 246:R161-R178; Borbely 1982 | Direct quantitative model; downgraded for indirectness (lab/averaged). |
 | `td_alpha` | 0.2 | 🟡 moderate | replicated | Schultz 2013, Curr Opin Neurobiol; Sutton & Barto (TD) | TD learning is well-established; the specific rate is a conventional default. |
 | `td_gamma` | 0.9 | 🟡 moderate | replicated | Sutton & Barto (TD) | TD discount factor; conventional RL value. |
+| `beta_a` | 4.0 | 🟠 low | replicated | Big Five (OCEAN) normative distributions; McCrae & Costa NEO norms; Soto et al. BFI-2 norms | Big Five trait distributions are well-documented in large normative samples (approximately symmetric/unimodal per trait). The SHAPE is evidenced, so this beats `assumed`; downgraded to `low` (not higher) because published norms are on instrument-specific scales that do not map cleanly onto a Beta on [0,1] -- the mapping carries its own assumption. A grade upgrade narrows its Morris range (assumed ±60% -> low ±40%), which would lower its Morris rank on a re-run. |
+| `beta_b` | 4.0 | 🟠 low | replicated | Big Five (OCEAN) normative distributions; McCrae & Costa NEO norms; Soto et al. BFI-2 norms | Big Five trait distributions are well-documented in large normative samples (approximately symmetric/unimodal per trait). The SHAPE is evidenced, so this beats `assumed`; downgraded to `low` (not higher) because published norms are on instrument-specific scales that do not map cleanly onto a Beta on [0,1] -- the mapping carries its own assumption. A grade upgrade narrows its Morris range (assumed ±60% -> low ±40%), which would lower its Morris rank on a re-run. |
 | `beta_recall` | 0.2 | 🟠 low | single_study | Jain & Ganguli 2024, PMID 39023518 | Recall-gating mechanism is evidenced; the scalar is assumed and now shapes a validated pattern (V4). |
 | `circadian_harmonics` | [0.97, 0.22, 0.07, 0.03] | 🟠 low | partial | Daan, Beersma & Borbely 1984 | 1st/2nd harmonics grounded; 3rd/4th are secondary-literature/assumed. |
 | `gain_N_range` | [0.5, 1.5] | 🟠 low | none | Arnsten 2009, Nat Rev Neurosci 10:410-422 | HPA reactivity scales with Neuroticism; the range is assumed. |
@@ -39,8 +41,6 @@ _81/90 parameters are low/very-low/assumed. This is expected and acceptable (§l
 | `acquaintance_bond` | 0.05 | ⚫ assumed | none | — | The distinction between having MET someone and having BONDED is real; the numeric floor is invented. |
 | `acquaintance_floor` | 0.001 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `base_interaction_prob` | 0.5 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
-| `beta_a` | 4.0 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
-| `beta_b` | 4.0 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `bond_gain` | 0.4 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `capacity` | 200 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
 | `close_threshold` | 0.3 | ⚫ assumed | none | — | Modelling scalar with no direct empirical basis; value chosen for plausible behaviour. Many were tuned during calibration (see CALIBRATION.md). |
